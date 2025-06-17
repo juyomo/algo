@@ -22,6 +22,7 @@ var romanToInt = function (s) {
     m.set('C', 100);
     m.set('D', 500);
     m.set('M', 1000);
+    m.set('_', -1);
 
     let sum = 0;
     for (let i = 0; i < s.length; i++) {
