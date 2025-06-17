@@ -1,5 +1,5 @@
 // Author: Juyoung Moon
-// https://leetcode.com/problems/maximum-depth-of-binary-tree/
+// https://leetcode.com/problems/contains-duplicate/
 // Solved for LeetCode 알고리즘 스터디 (Due Tue, June 17, 2025)
 
 // HW are the following 5 problems:
