@@ -8,7 +8,6 @@
 
 class Solution {
 public:
-
     int coinChange(vector<int>& coins, int amount) {
         int kMax = 100000000;
         vector<int> dp(amount + 1, kMax);
