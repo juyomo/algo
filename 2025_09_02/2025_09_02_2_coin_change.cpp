@@ -11,20 +11,20 @@ public:
     int coinChange(vector<int>& coins, int amount) {
         int kMax = 100000000;
         vector<int> dp(amount + 1, kMax);
-
+        
         dp[0] = 0;
         for (int c : coins) {
             if (c < dp.size()) {
                 dp[c] = 1;
             }
         }
+        
+        for (int currAmt = 1; currAmt < dp.size(); currAmt++) {
+            for (int coinAmt : coins) {
+                int prevIdx = currAmt - coinAmt;
 
-        for (int i = 1; i < dp.size(); i++) {
-            for (int j = 0; j < coins.size(); j++) {
-                int coinAmt = coins[j]; // 1, 2, 5
-                int prevIdx = i - coinAmt;
-                if (prevIdx >= 0 && dp[i] > dp[prevIdx] + 1) {
-                    dp[i] = dp[prevIdx] + 1;
+                if (prevIdx >= 0) {
+                    dp[currAmt] = min(dp[currAmt], dp[prevIdx] + 1);
                 }
             }
         }
