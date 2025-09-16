@@ -7,6 +7,46 @@
 // 2. Number of Islands (#200)
 
 class Solution {
+const vector<pair<int, int>> dirs = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
+public:
+    void dfs(int x, int y, vector<vector<char>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+
+        for (pair<int, int> dir : dirs) {
+            int nx = x + dir.first;
+            int ny = y + dir.second;
+
+            if (nx < 0 || nx >= m || ny < 0 || ny >= n)
+                continue;
+
+            if (grid[nx][ny] == '1') { // if land
+                grid[nx][ny] = '0';
+                dfs(nx, ny, grid); // deep into
+            }
+        }
+    }
+
+    int numIslands(vector<vector<char>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+        int cnt = 0;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    dfs(i, j, grid);
+                    cnt++;
+                }
+            }
+        }
+
+        return cnt;
+    }
+};
+
+/*
+class Solution {
 private:
     int drs[4] = {-1,0,1,0};
     int dcs[4] = {0,1,0,-1};
@@ -72,4 +112,4 @@ public:
         return islands;
     }
 };
-
+*/
