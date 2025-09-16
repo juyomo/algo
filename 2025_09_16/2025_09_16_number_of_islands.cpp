@@ -15,15 +15,7 @@ private:
             return v.first*31+v.second;
         }
     };
-    void printGrid(const vector<vector<char>>& grid) {
-        for (int i = 0; i < grid.size(); i++) {
-            for (int j = 0; j < grid[0].size(); j++) {
-                cout << grid[i][j] << " ";
-            }
-            cout << endl;
-        }
-        cout << endl << endl;
-    }
+    
     void removeOneIsland(vector<vector<char>>& grid, unordered_set<pair<int, int>, pair_hash>& ones) {
         // pick any island, mark them as 0 on grid
         // remove those coordinates from ones
@@ -38,8 +30,6 @@ private:
             break;
         }
 
-        //cout << "######" << currPos.first << " " << currPos.second << endl;
-        // bfs
         queue<pair<int, int>> tovisit;
         tovisit.push(currPos);
 
@@ -60,7 +50,6 @@ private:
                 }
             }
         }
-
     }
 
 public:
@@ -69,7 +58,6 @@ public:
         for (int i = 0; i < grid.size(); i++) {
             for (int j = 0; j < grid[0].size(); j++) {
                 if (grid[i][j] == '1') {
-                    //cout << i << " " << j << "#####" << endl;
                     ones.insert(make_pair(i, j));
                 }
             }
@@ -79,11 +67,9 @@ public:
         while (!ones.empty()) {
             removeOneIsland(grid, ones);
             islands++;
-
-            //printGrid(grid);
-            //cout << ones.size() << endl;
         }
 
         return islands;
     }
 };
+
