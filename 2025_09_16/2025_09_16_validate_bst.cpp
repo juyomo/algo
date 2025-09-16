@@ -17,10 +17,8 @@ private:
             return false;
         }
 
-        bool res = (root->left == nullptr || root->val > root->left->val) && 
-               (root->right == nullptr || root->val < root->right->val) && 
-               isValid(root->left, min, root->val) &&
-               isValid(root->right, root->val, max);
+        bool res = isValid(root->left, min, root->val) &&
+                   isValid(root->right, root->val, max);
 
         return res;
     }
